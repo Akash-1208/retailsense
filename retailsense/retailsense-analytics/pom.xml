@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.retailsense</groupId>
+        <artifactId>retailsense-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>retailsense-analytics</artifactId>
+    <packaging>jar</packaging>
+    <name>RetailSense Analytics Module</name>
+
+    <dependencies>
+        <!-- Depends on common -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-common</artifactId>
+        </dependency>
+
+        <!-- Depends on product and sales (reads data) -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-product</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-sales</artifactId>
+        </dependency>
+    </dependencies>
+</project>

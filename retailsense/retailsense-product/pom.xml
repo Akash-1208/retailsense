@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.retailsense</groupId>
+        <artifactId>retailsense-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>retailsense-product</artifactId>
+    <packaging>jar</packaging>
+    <name>RetailSense Product Module</name>
+
+    <dependencies>
+        <!-- Depends on common -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-common</artifactId>
+        </dependency>
+    </dependencies>
+</project>

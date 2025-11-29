@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.retailsense</groupId>
+        <artifactId>retailsense-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>retailsense-app</artifactId>
+    <packaging>jar</packaging>
+    <name>RetailSense Application</name>
+
+    <dependencies>
+        <!-- Include ALL modules -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-auth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-product</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-sales</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-analytics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-ai</artifactId>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <!-- Spring Boot DevTools (development only) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin (creates executable JAR) -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

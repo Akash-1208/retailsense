@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.retailsense</groupId>
+        <artifactId>retailsense-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>retailsense-ai</artifactId>
+    <packaging>jar</packaging>
+    <name>RetailSense AI Module</name>
+
+    <dependencies>
+        <!-- Depends on common -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-common</artifactId>
+        </dependency>
+
+        <!-- Depends on product and sales (needs data) -->
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-product</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-sales</artifactId>
+        </dependency>
+
+        <!-- OpenAI Java Client (or use RestTemplate) -->
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>service</artifactId>
+            <version>0.18.2</version>
+        </dependency>
+    </dependencies>
+</project>
