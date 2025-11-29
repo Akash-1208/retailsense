@@ -366,7 +366,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Your Name**
 - GitHub: [@Akash-1208](https://github.com/Akash-1208)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/kanakari-akash)
+- LinkedIn: [Akash LinkedIn](https://www.linkedin.com/in/kanakari-akash)
 - Email: kanakariakash1208@gmail.com
 
 ---
