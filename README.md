@@ -75,6 +75,8 @@ Small retail businesses in India face significant challenges:
 - Profit margin calculation
 - Search and filter functionality
 
+### Future Release
+
 #### 💰 Sales Tracking
 - Record sales transactions
 - Automatic stock reduction
@@ -322,11 +324,11 @@ GET  /api/ai/insights/product/{id}
 ### v1.0 ✅ (Current)
 - [x] Authentication system
 - [x] Product management
-- [x] Sales tracking
 - [x] Analytics dashboard
-- [x] Basic AI insights
 
 ### v2.0 🚧 (In Progress)
+- [ ] Sales tracking
+- [ ] Basic AI insights
 - [ ] Advanced AI with OpenAI integration
 - [ ] Multi-user support with roles
 - [ ] Supplier management
