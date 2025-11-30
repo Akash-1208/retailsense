@@ -1,5 +1,6 @@
 package com.retailsense.sales.controller;
 
+import com.retailsense.common.util.SecurityUtils;
 import com.retailsense.sales.dto.SaleRequest;
 import com.retailsense.sales.dto.SaleResponse;
 import com.retailsense.sales.dto.SalesSummary;
@@ -27,9 +28,12 @@ public class SalesController {
     @PostMapping
     public ResponseEntity<SaleResponse> recordSale(@Valid @RequestBody SaleRequest request) {
         log.info("POST /api/sales - Recording sale for product: {}", request.getProductId());
-        // TODO: Get userId from SecurityContext when auth is implemented
-        Long userId = 1L; // Hardcoded for now
-        SaleResponse response = salesService.recordSale(request, userId);
+
+        // Get current user's email from SecurityContext
+        String userEmail = SecurityUtils.getCurrentUserEmail();
+        log.debug("Sale being recorded by user: {}", userEmail);
+
+        SaleResponse response = salesService.recordSale(request, userEmail);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

@@ -24,5 +24,9 @@
             <groupId>com.retailsense</groupId>
             <artifactId>retailsense-product</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.retailsense</groupId>
+            <artifactId>retailsense-auth</artifactId>
+        </dependency>
     </dependencies>
 </project>

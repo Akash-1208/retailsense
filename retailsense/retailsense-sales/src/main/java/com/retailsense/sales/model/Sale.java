@@ -8,16 +8,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sales")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 public class Sale extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,7 +36,9 @@ public class Sale extends BaseEntity {
     @Column(name = "sale_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal salePrice;
 
-    @Column(name = "total_revenue", precision = 10, scale = 2)
+    @Column(name = "total_revenue", precision = 10, scale = 2,
+            insertable = false, updatable = false)  // ← Add this
+    @Generated(GenerationTime.ALWAYS)              // ← Add this
     private BigDecimal totalRevenue;
 
     @Column(name = "sale_date")

@@ -15,6 +15,8 @@ import {
   Menu,
   X
 } from "lucide-react";
+import SalesPage from "../pages/SalesPage";
+import AnalyticsPage from "../pages/AnalyticsPage";
 
 const MainLayout = () => {
   const { user, logout } = useAuth();
@@ -99,14 +101,9 @@ const MainLayout = () => {
 
           {currentPage === "dashboard" && <Dashboard />}
           {currentPage === "products" && <ProductsPage />}
+          {currentPage === "sales" && <SalesPage/>}
 
-          {currentPage === "sales" && (
-            <div className="text-2xl">Sales Page (Coming next)</div>
-          )}
-
-          {currentPage === "analytics" && (
-            <div className="text-2xl">Analytics Page (Coming next)</div>
-          )}
+          {currentPage === "analytics" && <AnalyticsPage/> }
 
           {currentPage === "ai" && (
             <div className="text-2xl">AI Insights Page (Coming next)</div>

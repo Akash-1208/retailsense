@@ -1,7 +1,9 @@
 package com.retailsense.sales.service;
 
 import com.retailsense.common.exception.InsufficientStockException;
+import com.retailsense.common.exception.UnauthorizedException;
 import com.retailsense.common.model.User;
+import com.retailsense.auth.repository.UserRepository;
 import com.retailsense.product.model.Product;
 import com.retailsense.product.service.ProductService;
 import com.retailsense.sales.dto.SaleRequest;
@@ -28,9 +30,21 @@ public class SalesService {
 
     private final SalesRepository salesRepository;
     private final ProductService productService;
+    private final UserRepository userRepository;
 
-    public SaleResponse recordSale(SaleRequest request, Long userId) {
-        log.info("Recording sale for product: {}, quantity: {}", request.getProductId(), request.getQuantitySold());
+    /**
+     * Record a sale
+     * @param request Sale details (productId, quantity)
+     * @param userEmail Email of the user recording the sale (from SecurityContext)
+     * @return Sale response with details
+     */
+    public SaleResponse recordSale(SaleRequest request, String userEmail) {
+        log.info("Recording sale for product: {}, quantity: {} by user: {}",
+                request.getProductId(), request.getQuantitySold(), userEmail);
+
+        // Get the user from database
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new UnauthorizedException("User not found: " + userEmail));
 
         // Get product
         Product product = productService.getProductById(request.getProductId());
@@ -43,21 +57,20 @@ public class SalesService {
         // Create sale
         Sale sale = Sale.builder()
                 .product(product)
-                .user(User.builder().build())
+                .user(user)  // Now we have the full User object with ID
                 .quantitySold(request.getQuantitySold())
                 .salePrice(product.getSellingPrice())
                 .saleDate(LocalDateTime.now())
                 .build();
 
-        // Calculate total revenue
-        sale.setTotalRevenue(product.getSellingPrice().multiply(BigDecimal.valueOf(request.getQuantitySold())));
+
 
         Sale savedSale = salesRepository.save(sale);
 
         // Reduce product stock
         productService.reduceStock(product.getId(), request.getQuantitySold());
 
-        log.info("Sale recorded successfully: {}", savedSale.getId());
+        log.info("Sale recorded successfully: {} by user: {}", savedSale.getId(), user.getName());
 
         // Get updated product
         Product updatedProduct = productService.getProductById(product.getId());
@@ -72,10 +85,9 @@ public class SalesService {
                 .totalRevenue(savedSale.getTotalRevenue())
                 .saleDate(savedSale.getSaleDate())
                 .remainingStock(updatedProduct.getQuantity())
-                .userName("User")
+                .userName(user.getName())  // Now we can show actual user name
                 .build();
     }
-
     @Transactional(readOnly = true)
     public List<SaleResponse> getSalesHistory(LocalDateTime startDate, LocalDateTime endDate) {
         log.info("Fetching sales history from {} to {}", startDate, endDate);
