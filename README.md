@@ -75,9 +75,7 @@ Small retail businesses in India face significant challenges:
 - Profit margin calculation
 - Search and filter functionality
 
-### Future Release
-
-#### 💰 Sales Tracking
+ #### 💰 Sales Tracking
 - Record sales transactions
 - Automatic stock reduction
 - Sales history with filters
@@ -90,6 +88,8 @@ Small retail businesses in India face significant challenges:
 - Category-wise revenue distribution
 - Revenue and profit summaries
 - Interactive charts with Recharts
+
+### Future Release
 
 #### 🤖 AI Insights
 - Predictive stock-out analysis
