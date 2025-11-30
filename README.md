@@ -310,7 +310,11 @@ GET  /api/ai/insights/product/{id}
 *Intuitive product management with search and filters*
 
 ### Sales Entry
-![Sales](screenshots/sales.PNG)
+![Sales](SalesPage.PNG)
+*Quick sales recording with stock updates*
+
+### Analytics
+![Analytics](Analytics.PNG)
 *Quick sales recording with stock updates*
 
 ### AI Insights
